@@ -7,7 +7,7 @@ gem 'sinatra'
 gem 'puma'
 gem 'rackup'
 
-gem 'sequel'
+gem 'activerecord'
 gem 'mysql2'
 
 gem 'dotenv'

@@ -8,3 +8,6 @@ install:
 
 run:
 	@bundle exec ruby $(MAIN)
+
+clean:
+	@rm -rf .bundle vendor Gemfile.lock 

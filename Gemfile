@@ -11,3 +11,4 @@ gem 'activerecord'
 gem 'mysql2'
 
 gem 'dotenv'
+

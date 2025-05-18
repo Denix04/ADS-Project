@@ -6,9 +6,11 @@ source 'https://rubygems.org'
 gem 'sinatra'
 gem 'puma'
 gem 'rackup'
+gem 'sinatra-contrib'
 
 gem 'activerecord'
-gem 'mysql2'
+gem 'sqlite3'
 
 gem 'dotenv'
 
+gem 'sinatra-reloader'

@@ -1,16 +1,23 @@
 require 'sinatra'
 require 'active_record'
-require 'mysql2'
-require 'dotenv/load'
+require 'sqlite3'
 
 require_relative 'frontend'
 require_relative 'backend/backendEndpoint'
 require_relative 'backend/model/user'
 
-DB = ActiveRecord::Base.establish_connection(
-  adapter:  'mysql2',
-  host:     ENV['DB_HOST'],
-  database: ENV['DB_NAME'],
-  user:     ENV['DB_USER'],
-  password: ENV['DB_PASSWORD']
-)
+
+
+require 'sinatra'
+
+get '/' do
+  erb :login
+end
+
+get '/main' do
+  erb :main
+end
+
+get '/transfer' do
+  erb :transfer
+end

@@ -1,6 +1,8 @@
 require 'sinatra'
-require 'active_record'
+require 'sinatra/activerecord'
 require 'sqlite3'
+set :database, {adapter: "sqlite3", database: "db/wallet_development.sqlite3"}
+
 
 require_relative 'frontend'
 require_relative 'backend/backendEndpoint'

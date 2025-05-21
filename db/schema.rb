@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_21_014830) do
+ActiveRecord::Schema[7.1].define(version: 2025_05_21_141913) do
   create_table "accounts", force: :cascade do |t|
     t.integer "user_id"
     t.decimal "saldo", precision: 10, scale: 2
@@ -20,6 +20,20 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_21_014830) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_accounts_on_user_id"
+  end
+
+  create_table "movements", force: :cascade do |t|
+    t.decimal "amount", precision: 10, scale: 2, null: false
+    t.string "reason"
+    t.string "service"
+    t.datetime "date"
+    t.string "type"
+    t.integer "origin_id"
+    t.integer "destination_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["destination_id"], name: "index_movements_on_destination_id"
+    t.index ["origin_id"], name: "index_movements_on_origin_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -34,4 +48,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_21_014830) do
   end
 
   add_foreign_key "accounts", "users"
+  add_foreign_key "movements", "accounts", column: "destination_id"
+  add_foreign_key "movements", "accounts", column: "origin_id"
 end

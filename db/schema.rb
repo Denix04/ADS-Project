@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_21_011914) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_21_014830) do
+  create_table "accounts", force: :cascade do |t|
+    t.integer "user_id"
+    t.decimal "saldo", precision: 10, scale: 2
+    t.string "cbu"
+    t.string "alias"
+    t.boolean "es_subcuenta"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_accounts_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -21,4 +32,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_21_011914) do
     t.string "dni"
     t.string "localidad"
   end
+
+  add_foreign_key "accounts", "users"
 end

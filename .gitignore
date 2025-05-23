@@ -1,6 +1,4 @@
-vendor/*
-.bundle
 .ruby-lsp
 Gemfile.lock
-.env
+.vscode
 .$ADS_UML.drawio.bkp

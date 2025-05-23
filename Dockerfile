@@ -14,7 +14,7 @@ ENV BUNDLE_PATH=/usr/local/bundle \
 WORKDIR /app
 
 # Copia Gemfile y Gemfile.lock para instalar dependencias primero (aprovecha caché de Docker).
-COPY Gemfile Gemfile.lock ./
+COPY Gemfile ./
 
 # Ejecuta bundle install para instalar las gemas especificadas en el Gemfile.
 RUN bundle install

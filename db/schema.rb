@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_05_27_201621) do
+ActiveRecord::Schema[7.1].define(version: 2025_05_27_205932) do
   create_table "accounts", force: :cascade do |t|
     t.integer "user_id"
     t.decimal "saldo", precision: 10, scale: 2
@@ -32,8 +32,10 @@ ActiveRecord::Schema[7.1].define(version: 2025_05_27_201621) do
     t.integer "destination_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "service_account_id"
     t.index ["destination_id"], name: "index_movements_on_destination_id"
     t.index ["origin_id"], name: "index_movements_on_origin_id"
+    t.index ["service_account_id"], name: "index_movements_on_service_account_id"
   end
 
   create_table "restrictions", force: :cascade do |t|
@@ -75,6 +77,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_05_27_201621) do
   add_foreign_key "accounts", "users"
   add_foreign_key "movements", "accounts", column: "destination_id"
   add_foreign_key "movements", "accounts", column: "origin_id"
+  add_foreign_key "movements", "service_accounts"
   add_foreign_key "restrictions", "accounts", column: "cuenta_primaria_id"
   add_foreign_key "restrictions", "accounts", column: "subcuenta_id"
 end

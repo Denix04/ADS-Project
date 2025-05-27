@@ -3,7 +3,7 @@ class CreateMovements < ActiveRecord::Migration[7.1]
     create_table :movements do |t|
       t.decimal :amount, precision: 10, scale: 2, null: false
       t.string :reason
-      t.string :service  #  t.references :service cuando tengamos la  tabla services
+      t.string :service  # una descripcion del servicio que se pago
       t.datetime :date
       t.string :type  
       t.references :origin, foreign_key: { to_table: :accounts }, null: true

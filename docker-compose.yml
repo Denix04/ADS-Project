@@ -13,7 +13,7 @@ services:
     # - -I .: Añade el directorio actual a la ruta de carga de Ruby.
     # - --debug: Habilita salida detallada.
     # - --require sinatra/reloader: Carga el reloader de Sinatra para recarga en caliente.
-    command: bundle exec rackup -o 0.0.0.0 -p 8000 -I . --debug --require sinatra/reloader
+    command: bundle exec rackup -o 0.0.0.0 -p 8000 -I . --require sinatra/reloader
     # Mapea el puerto 8000 del contenedor al puerto 8000 del host.
     ports:
       - '8000:8000'

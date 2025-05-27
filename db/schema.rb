@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_05_27_205932) do
+ActiveRecord::Schema[7.1].define(version: 2025_05_27_212535) do
   create_table "accounts", force: :cascade do |t|
     t.integer "user_id"
     t.decimal "saldo", precision: 10, scale: 2
@@ -19,6 +19,8 @@ ActiveRecord::Schema[7.1].define(version: 2025_05_27_205932) do
     t.boolean "es_subcuenta"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "principal_account_id"
+    t.index ["principal_account_id"], name: "index_accounts_on_principal_account_id"
     t.index ["user_id"], name: "index_accounts_on_user_id"
   end
 
@@ -74,6 +76,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_05_27_205932) do
     t.index ["dni"], name: "index_users_on_dni", unique: true
   end
 
+  add_foreign_key "accounts", "accounts", column: "principal_account_id"
   add_foreign_key "accounts", "users"
   add_foreign_key "movements", "accounts", column: "destination_id"
   add_foreign_key "movements", "accounts", column: "origin_id"

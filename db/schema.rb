@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_05_21_141913) do
+ActiveRecord::Schema[7.1].define(version: 2025_05_22_224541) do
   create_table "accounts", force: :cascade do |t|
     t.integer "user_id"
     t.decimal "saldo", precision: 10, scale: 2
@@ -36,6 +36,29 @@ ActiveRecord::Schema[7.1].define(version: 2025_05_21_141913) do
     t.index ["origin_id"], name: "index_movements_on_origin_id"
   end
 
+  create_table "restrictions", force: :cascade do |t|
+    t.integer "cuenta_primaria_id", null: false
+    t.integer "subcuenta_id", null: false
+    t.string "type", null: false
+    t.decimal "monto"
+    t.text "dias", null: false
+    t.time "horario_inicio"
+    t.time "horario_fin"
+    t.boolean "baja", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cuenta_primaria_id"], name: "index_restrictions_on_cuenta_primaria_id"
+    t.index ["subcuenta_id"], name: "index_restrictions_on_subcuenta_id"
+  end
+
+  create_table "service_accounts", force: :cascade do |t|
+    t.integer "id_cliente", null: false
+    t.string "nombre_responsable", null: false
+    t.date "fecha_asociacion", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -50,4 +73,6 @@ ActiveRecord::Schema[7.1].define(version: 2025_05_21_141913) do
   add_foreign_key "accounts", "users"
   add_foreign_key "movements", "accounts", column: "destination_id"
   add_foreign_key "movements", "accounts", column: "origin_id"
+  add_foreign_key "restrictions", "accounts", column: "cuenta_primaria_id"
+  add_foreign_key "restrictions", "accounts", column: "subcuenta_id"
 end

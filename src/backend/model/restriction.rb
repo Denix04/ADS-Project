@@ -7,22 +7,22 @@
     validates :cuenta_primaria, presence: true
     validates :subcuenta, presence: true
     validates :dias, presence: true
-  
+    
     validate :cuentas_diferentes
     validate :is_subcuenta
     private
   
     # Validar que las cuentas sean distintas
     def cuentas_diferentes
-      if cuenta_primaria_id == cuenta_secundaria_id
-        errors.add(:cuenta_secundaria, "no puede ser la misma que cuenta primaria")
+      if cuenta_primaria_id == subcuenta_id
+        errors.add(:subcuenta, "no puede ser la misma que cuenta primaria")
       end
     end
 
      # Validar que la subcuenta sea subcuenta
      def is_subcuenta
         if subcuenta_es_subcuenta == false
-          errors.add(:cuenta_secundaria, "no es cuenta secundaria")
+          errors.add(:subcuenta, "no es cuenta secundaria")
         end
       end
   end

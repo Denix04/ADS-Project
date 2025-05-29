@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Sinatra App</title>
+  <link rel="stylesheet" href="/css/theme/dark.css">
+  <link rel="stylesheet" href="/css/login.css">
+	<link rel="stylesheet" href="/css/servicio.css">
+</head>
+<body>
+
+  <header>
+    <h2>Pagar Servicio</h2>
+  </header>
+
+
+	<section>
+
+	<form action='/servicio' method="post">
+
+		<input type="text" name="nombre-servicio" class="buscador" placeholder="|Buscar servicio">
+
+		<h3>Servicios frecuentes</h3>
+		<div class="servicios-opciones">
+
+			<div class="serv">
+				<img src="agua.png" alt="Agua">
+				<hr>
+				<p>Agua</p>
+			</div>
+			<div class="serv">
+				<img src="luz.png" alt="Luz">
+				<hr>
+				<p>Luz</p>
+			</div>
+			<div class="serv">
+				<img src="gas.png" alt="Gas">
+				<hr>
+				<p>Gas</p>
+			</div>
+		</div>
+
+		<input type="number" name="costo" step="0.01" min="0" placeholder="0.00" required><br>
+    <label>Monto a pagar</label><br>
+
+	 
+		<div class="botones-registro">
+			<button type="button" id="cancela" class="submit">Cancelar</button>
+			<button type="submit" id="confirm" class="submit">Confirmar</button>
+		</div> 
+	</form>
+	
+</section>
+
+<footer>
+	ByTheMostCapos
+</footer>
+
+<script src="/js/servicio.js"></script>
+</body>
+</html>

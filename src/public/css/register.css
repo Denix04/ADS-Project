@@ -1,0 +1,23 @@
+form {
+    display: block;
+}
+
+label {
+    margin-top: -15px; 
+}
+
+.campos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+}
+.campo {
+    width: 48%;
+}
+
+.botones-registro {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}

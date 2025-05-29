@@ -15,3 +15,11 @@ end
 get '/register' do
   erb :register
 end
+
+post '/' do
+  erb :main
+end
+
+post '/register' do
+  erb :login
+end

@@ -11,3 +11,7 @@ end
 get '/transfer' do
   erb :transfer
 end
+
+get '/charging' do
+  erb :charging
+end

@@ -4,6 +4,7 @@
   <title>My Sinatra App</title>
   <link rel="stylesheet" href="/css/theme/dark.css">
   <link rel="stylesheet" href="/css/login.css">
+  <link rel="stylesheet" href="/css/register.css">
 </head>
 <body>
 
@@ -15,23 +16,40 @@
 
     <form action='/register' method="post">
 
-      <input type="text" name="nombre" placeholder="Nombre" required><br>
-      <label>Nombre</label><br>
+        <div class="campos">
 
-      <input type="text" name="apellido" placeholder="Apellido" required><br>
-      <label>Apellido</label><br>
+            <div class="campo">
+                <input type="text" name="nombre" placeholder="Nombre" required><br>
+                <label>Nombre</label>
+            </div>  
+            <div class="campo">
+                <input type="text" name="apellido" placeholder="Apellido" required><br>
+                <label>Apellido</label>
+            </div>
+            <div class="campo">
+                <input type="text" name="dni" placeholder="12345678" required><br>
+                <label>DNI</label>
+            </div>
+            <div class="campo">
+                <input type="text" name="localidad" placeholder="Rio Cuarto" required><br>
+                <label>localidad</label>
+            </div>
+            <div class="campo">
+                <input type="email" name="email" placeholder="example@gmail.com" required><br>
+                <label>email</label>
+            </div>
+            <div class="campo">
+                <input type="password" name="password" placeholder="********" required><br>
+                <label>Password</label>
+            </div>
 
-      <input type="text" name="dni" placeholder="12345678" required><br>
-      <label>DNI</label><br>
-
-      <input type="email" name="email" placeholder="example@gmail.com" required><br>
-      <label>email</label><br>
-
-      <input type="password" name="password" placeholder="********" required><br>
-      <label>Password</label><br>
-
-      <button type="button" id="cancel" class="submit opcion">Cancelar</button>
-      <button type="submit" id="confirm" class="submit opcion">Confirmar</button>
+        </div>
+     
+      
+        <div class="botones-registro">
+            <button type="button" id="cancel" class="submit">Cancelar</button>
+            <button type="submit" id="confirm" class="submit">Confirmar</button>
+        </div> 
     </form>
     
   </section>

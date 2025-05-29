@@ -11,3 +11,7 @@ end
 get '/transfer' do
   erb :transfer
 end
+
+get '/register' do
+  erb :register
+end

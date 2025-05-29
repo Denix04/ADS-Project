@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Sinatra App</title>
+  <link rel="stylesheet" href="/css/theme/dark.css">
+  <link rel="stylesheet" href="/css/login.css">
+</head>
+<body>
+
+  <header>
+    <h2>Registration</h2>
+  </header>
+
+  <section>
+
+    <form action='/register' method="post">
+
+      <input type="text" name="nombre" placeholder="Nombre" required><br>
+      <label>Nombre</label><br>
+
+      <input type="text" name="apellido" placeholder="Apellido" required><br>
+      <label>Apellido</label><br>
+
+      <input type="text" name="dni" placeholder="12345678" required><br>
+      <label>DNI</label><br>
+
+      <input type="email" name="email" placeholder="example@gmail.com" required><br>
+      <label>email</label><br>
+
+      <input type="password" name="password" placeholder="********" required><br>
+      <label>Password</label><br>
+
+      <button type="button" id="cancel" class="submit opcion">Cancelar</button>
+      <button type="submit" id="confirm" class="submit opcion">Confirmar</button>
+    </form>
+    
+  </section>
+
+  <footer>
+    ByTheMostCapos
+  </footer>
+
+  <script src="/js/script.js"></script>
+</body>
+</html>

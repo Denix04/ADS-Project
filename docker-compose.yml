@@ -21,4 +21,9 @@ services:
     volumes:
       - .:/app
 
-
+  test:
+    build: .
+    volumes:
+      - .:/app
+    command: bundle exec rspec
+    

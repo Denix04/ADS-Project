@@ -10,6 +10,9 @@ ENV BUNDLE_PATH=/usr/local/bundle \
     BUNDLE_APP_CONFIG=/usr/local/bundle/config \
     RAILS_ENV=development
 
+# Instalar dependencias necesarias para sqlite3
+RUN apt-get update -qq && apt-get install -y sqlite3 libsqlite3-dev
+
 # Establece /app como el directorio de trabajo dentro del contenedor.
 WORKDIR /app
 
@@ -32,3 +35,5 @@ EXPOSE 8000
 # - -p 8000: Usa el puerto 8000.
 # Busca automáticamente config.ru para iniciar la aplicación.
 CMD ["bundle", "exec", "rackup", "-o", "0.0.0.0", "-p", "8000"]
+
+CMD ["rspec"]

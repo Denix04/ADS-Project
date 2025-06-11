@@ -8,7 +8,7 @@ class CreateMovements < ActiveRecord::Migration[7.1]
       t.string :type  
       t.references :origin, foreign_key: { to_table: :accounts }, null: true
       t.references :destination, foreign_key: { to_table: :accounts }, null: true
-
+      t.references :service_account, foreign_key: {to_table: :service_accounts}, null: true
       t.timestamps
     end
   end

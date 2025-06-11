@@ -1,6 +1,6 @@
 require 'sinatra'
 
-get '/' do
+get '/login' do
   erb :login
 end
 
@@ -23,6 +23,20 @@ end
 get '/servicio' do
   erb :servicio
 end
+
+get '/perfil' do
+  erb :perfil
+end
+
+get '/movimientos' do
+  erb :movements
+end
+
+get '/' do
+  erb :publicview
+end
+
+
 
 post '/' do
   erb :main

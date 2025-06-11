@@ -1,0 +1,40 @@
+form {
+    display: block;
+}
+
+label {
+    margin-top: -15px; 
+}
+
+.buscador {
+    background-color: #444D48;
+    border-radius: 5px;
+    border-style: solid;
+    border-color: #CFF7D3;
+}
+
+input::placeholder {
+    color:#8E9990;
+    text-align: left;
+    font-size: large;
+}
+
+
+.servicios-opciones {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.serv {
+    padding: 15px;
+    background-color: #CFF7D3;
+    color: #000;
+    border-radius: 10px;
+}
+
+.botones-registro {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}

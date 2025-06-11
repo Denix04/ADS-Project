@@ -2,17 +2,34 @@
 <html>
 <head>
   <title>My Sinatra App</title>
+  <link rel="stylesheet" href="/css/theme/dark.css">
   <link rel="stylesheet" href="/css/login.css">
 </head>
 <body>
 
+  <header>
+    <h2>Log In</h2>
+  </header>
+
   <section>
-    <header>
-      <h2>Log In</h2>
-    </header>
-    <div id="principalFrame">
-        <button id="cancel"> Cancelar </button>
-        <button id="confirm"> Confirmar </button>
+
+    <form action='/' method="post">
+
+      <input type="email" name="email" placeholder="example@gmail.com" required><br>
+      <label>Email</label><br>
+
+      <input type="password" name="password" placeholder="********" required><br>
+      <label>Password</label><br>
+
+      <button type="submit" id="confirm" class="submit">Confirmar</button>
+    </form>
+   
+    <div class="recuperar">
+        <button id="cancel" class="boton"> ¿Olvidaste tu contraseña? </button>
+    </div>
+
+    <div class="registro">
+        <button id="register_btn" class="boton"> Registrarse </button>
     </div>
   </section>
 
@@ -20,6 +37,6 @@
     ByTheMostCapos
   </footer>
 
-  <script src="/js/script.js"></script>
+  <script src="/js/login.js"></script>
 </body>
 </html>

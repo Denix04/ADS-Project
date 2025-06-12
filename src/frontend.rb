@@ -7,6 +7,7 @@ get '/login' do
 end
 
 get '/main' do
+  @user = User.find(session[:id])
   erb :main
 end
 
@@ -31,15 +32,13 @@ get '/perfil' do
     @user = User.find(session[:id])
     @account = @user.account
     @subaccounts = @account.subaccounts if @account #para mostrar las info de las subcuentas si tiene
-
     erb :perfil
+
   rescue ActiveRecord::RecordNotFound
     status 404
     'Usuario no encontrado'
   end
 end
-
-
 
 get '/movimientos' do
   erb :movements
@@ -47,18 +46,4 @@ end
 
 get '/' do
   erb :publicview
-end
-
-
-
-post '/' do
-  erb :main
-end
-
-post '/register' do
-  erb :login
-end
-
-post '/servicio' do
-  erb :main
 end

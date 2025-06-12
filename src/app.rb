@@ -1,6 +1,7 @@
 require 'sinatra'
 require 'sinatra/activerecord'
 require 'sqlite3'
+require 'yaml'
 
 require_relative 'frontend'
 require_relative 'backend/backendEndpoint'
@@ -11,4 +12,9 @@ require_relative 'backend/model/movement'
 require_relative 'backend/model/transfer'
 
 
-set :database, {adapter: "sqlite3", database: "db/wallet_development.sqlite3"}
+# Configuración dinámica según entorno
+if defined?(Sinatra)
+  env = ENV['RACK_ENV'] || ENV['APP_ENV'] || 'development'
+  db_config = YAML.load_file(File.expand_path('../config/database.yml', __dir__), aliases: true)
+  set :database, db_config[env]
+end

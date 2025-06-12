@@ -1,0 +1,92 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #1e1e1e;
+  color: #e0f8e3;
+    
+}
+
+.main-content {
+  flex: 1; /* Este contenedor crece para ocupar espacio y empuja el footer abajo */
+}
+
+/* El resto de tu CSS ya existente */
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #2a2a2a;
+  border-bottom: 1px solid #aaffc3;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #aaffc3;
+}
+
+.nav-links a {
+  color: #e0f8e3;
+  margin-left: 1.5rem;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.nav-links a:hover {
+  text-decoration: underline;
+}
+
+.hero {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 3rem 2rem;
+}
+
+.text-content {
+  max-width: 500px;
+}
+
+.text-content h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.highlight {
+  color: #aaffc3;
+}
+
+.text-content p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+.text-content button {
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  background-color: #aaffc3;
+  color: #1e1e1e;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.text-content button:hover {
+  background-color: #86d9a7;
+}
+
+.image-content img {
+  max-width: 400px;
+  width: 100%;
+}
+
+.footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: #2a2a2a;
+  border-top: 1px solid #aaffc3;
+  font-size: 0.9rem;
+}

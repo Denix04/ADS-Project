@@ -1,5 +1,7 @@
 require 'sinatra'
 
+require_relative './backend/controller/user_ctl'
+
 get '/login' do
   erb :login
 end
@@ -25,20 +27,15 @@ get '/servicio' do
 end
 
 get '/perfil' do
-  erb :perfil
-end
-
-get '/perfil/:id'do
   begin
-    @user = User.find(params[:id]) #buscar el usuario por id para mostrar datos de us
-    @account = @user.account #para mostrar su cbu y alias
+    @user = User.find(session[:id])
+    @account = @user.account
     @subaccounts = @account.subaccounts if @account #para mostrar las info de las subcuentas si tiene
-    
 
     erb :perfil
   rescue ActiveRecord::RecordNotFound
     status 404
-    "Usuario no encontrado"
+    'Usuario no encontrado'
   end
 end
 

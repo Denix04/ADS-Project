@@ -23,27 +23,26 @@
       <p> <strong>Fecha de nacimiento</strong> <span>  <%=@user.fecha_nacimiento%> </span> </p>
       <p> <strong>Correo electrónico</strong> <span>  <%=@user.email%>  </span> </p>
       <% if @account %>
-    <p><strong>CBU:</strong> <%= @account.cbu %></p>
-    <p><strong>Alias:</strong> <%= @account.alias %></p>
-    
+        <p><strong>CBU:</strong> <%= @account.cbu %></p>
+        <p><strong>Alias:</strong> <%= @account.alias %></p>
      <% end %>
     </div>
 
 
-<h2 class="subtitle">Cuentas Asociadas</h2>
+    <h2 class="subtitle">Cuentas Asociadas</h2>
 
-<div class="accounts">
-  <% @subaccounts.each do |sub| %>
-    <% initials = "#{sub.user.name[0]}#{sub.user.last_name[0]}".downcase %>
-    <div class="account">
-      <div class="initials <%= initials %>"><%= initials.upcase %></div>
-      <div class="details">
-        <span><%= sub.user.name %> <%= sub.user.last_name %></span>
-        <span class="amount">$ <%= '%.2f' % sub.saldo %></span>
-      </div>
+    <div class="accounts">
+      <% @subaccounts.each do |sub| %>
+        <% initials = "#{sub.user.name[0]}#{sub.user.last_name[0]}".downcase %>
+        <div class="account">
+          <div class="initials <%= initials %>"><%= initials.upcase %></div>
+          <div class="details">
+            <span><%= sub.user.name %> <%= sub.user.last_name %></span>
+            <span class="amount">$ <%= '%.2f' % sub.saldo %></span>
+          </div>
+        </div>
+      <% end %>
     </div>
-  <% end %>
-</div>
 
     <footer>
     </footer>

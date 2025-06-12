@@ -28,6 +28,22 @@ get '/perfil' do
   erb :perfil
 end
 
+get '/perfil/:id'do
+  begin
+    @user = User.find(params[:id]) #buscar el usuario por id para mostrar datos de us
+    @account = @user.account #para mostrar su cbu y alias
+    @subaccounts = @account.subaccounts if @account #para mostrar las info de las subcuentas si tiene
+    
+
+    erb :perfil
+  rescue ActiveRecord::RecordNotFound
+    status 404
+    "Usuario no encontrado"
+  end
+end
+
+
+
 get '/movimientos' do
   erb :movements
 end

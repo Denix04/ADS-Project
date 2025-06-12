@@ -22,18 +22,4 @@ COPY Gemfile ./
 # Ejecuta bundle install para instalar las gemas especificadas en el Gemfile.
 RUN bundle install
 
-# Copia todo el contenido del proyecto al directorio /app.
-COPY . .
-
-# Expone el puerto 8000 para acceso externo.
 EXPOSE 8000
-
-# Define el comando predeterminado para iniciar el contenedor:
-# - bundle exec: Ejecuta comandos en el contexto de las gemas instaladas.
-# - rackup: Inicia el servidor Rack.
-# - -o 0.0.0.0: Escucha en todas las interfaces de red.
-# - -p 8000: Usa el puerto 8000.
-# Busca automáticamente config.ru para iniciar la aplicación.
-CMD ["bundle", "exec", "rackup", "-o", "0.0.0.0", "-p", "8000"]
-
-CMD ["rspec"]

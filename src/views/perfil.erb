@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Perfil</title>
   <link rel="stylesheet" href="/css/perfil.css">
-<link rel="stylesheet" href="/css/theme/dark.css">
+
 </head>
 <body>
   <div class="container">
@@ -17,40 +17,33 @@
     <hr>
 
     <div class="profile-info">
-      <p><strong>Mariana Gonzáles</strong></p>
-      <p><strong>DNI</strong> <span>12.345.678</span></p>
-      <p><strong>Fecha de nacimiento</strong> <span>22/06/1961</span></p>
-      <p><strong>Correo electrónico</strong> <span>mgonzales@gmail.com</span></p>
-      <p><strong>Teléfono</strong> <span>(11) 2349-5678</span></p>
+ 
+      <p> <strong> <%=@user.name%> <%=@user.last_name%> </strong>   </p>
+      <p> <strong>DNI</strong> <span> <%=@user.dni%> </span> </p>
+      <p> <strong>Fecha de nacimiento</strong> <span>  <%=@user.fecha_nacimiento%> </span> </p>
+      <p> <strong>Correo electrónico</strong> <span>  <%=@user.email%>  </span> </p>
+      <% if @account %>
+    <p><strong>CBU:</strong> <%= @account.cbu %></p>
+    <p><strong>Alias:</strong> <%= @account.alias %></p>
+    
+     <% end %>
     </div>
 
-    <hr>
 
-    <h2 class="subtitle">Cuentas Asociadas</h2>
+<h2 class="subtitle">Cuentas Asociadas</h2>
 
-    <div class="accounts">
-      <div class="account">
-        <div class="initials ad">AD</div>
-        <div class="details">
-          <span>Abril Debenardi</span>
-          <span class="amount">$ 1.000</span>
-        </div>
-      </div>
-      <div class="account">
-        <div class="initials bd">BD</div>
-        <div class="details">
-          <span>Bruno Debenardi</span>
-          <span class="amount">$ 5.000</span>
-        </div>
-      </div>
-      <div class="account">
-        <div class="initials cd">CD</div>
-        <div class="details">
-          <span>Carla Debenardi</span>
-          <span class="amount">$ 1.300</span>
-        </div>
+<div class="accounts">
+  <% @subaccounts.each do |sub| %>
+    <% initials = "#{sub.user.name[0]}#{sub.user.last_name[0]}".downcase %>
+    <div class="account">
+      <div class="initials <%= initials %>"><%= initials.upcase %></div>
+      <div class="details">
+        <span><%= sub.user.name %> <%= sub.user.last_name %></span>
+        <span class="amount">$ <%= '%.2f' % sub.saldo %></span>
       </div>
     </div>
+  <% end %>
+</div>
 
     <footer>
     </footer>

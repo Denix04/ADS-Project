@@ -5,7 +5,7 @@ class Account < ActiveRecord::Base
 
   validates :cbu, uniqueness: true, allow_nil: true
   validates :alias, uniqueness: true, allow_nil: true
-  validates :numcuenta, uniqueness: true, allow_nil: true
+  validates :alias, length: { maximum: 50 }, allow_blank: true
   validates :saldo, numericality: { greater_than_or_equal_to: 0 }
 
   belongs_to :principal_account, class_name: 'Account', optional: true

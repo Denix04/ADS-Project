@@ -16,7 +16,7 @@ module UserCtl
     user_account = Account.create!(
       user: user,
       saldo: 10000,
-      cbu: 123454656,
+      cbu: 123454660,
       alias: "#{user.name.downcase}_principal",
       es_subcuenta: false)
 

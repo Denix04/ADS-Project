@@ -1,20 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>My Sinatra App</title>
+  <title>Transferencia</title>
   <link rel="stylesheet" href="/css/theme/dark.css">
+  <link rel="stylesheet" href="/css/login.css">
   <link rel="stylesheet" href="/css/transfer.css">
 </head>
 <body>
+  <header>
+    <h2>Transferencia</h2>
+  </header>
 
-  <section id="frame">
-    <header>
-      <h2>Transferir</h2>
-    </header>
-    <div id="principalFrame">
-        <button id="cancel"> Cancelar </button>
-        <button id="confirm"> Confirmar </button>
+  <section>
+    <% if params[:error] %>
+      <div class="error-msg"><%= params[:error] %></div>
+    <% elsif params[:success] %>
+      <div class="success-msg">Transferencia realizada exitosamente.</div>
+    <% end %>
+
+    <div class="saldo-box">
+      <label>Saldo actual</label>
+      <div class="saldo-monto">$<%= User.find(session[:id]).account.saldo %></div>
     </div>
+
+    <form action="/api/transfer" method="post">
+      <input type="text" name="cbu" placeholder="CBU o Alias" required><br>
+      <label>CBU/Alias</label><br>
+
+      <input type="number" name="amount" placeholder="Monto" required step="0.01" min="0.01"><br>
+      <label>Monto</label><br>
+
+      <button type="submit" class="submit">Confirmar</button>
+      <a href="/main"><button type="button" class="boton">Cancelar</button></a>
+    </form>
   </section>
 
   <footer>

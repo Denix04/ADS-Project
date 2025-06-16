@@ -20,8 +20,11 @@ body {
 
 .back {
   font-weight: bold;
-  color: #f9ddc6;
   cursor: pointer;
+}
+.back a {
+  text-decoration: none;
+  color: #f9ddc6;
 }
 
 .title {

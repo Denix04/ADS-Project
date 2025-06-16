@@ -53,7 +53,13 @@ get '/' do
   erb :publicview
 end
 
+get '/servicepayment' do
+  @user = User.find(session[:id])
+  erb :servicio
+end
+
 get '/logout' do
   session.clear 
   redirect '/login' 
 end
+

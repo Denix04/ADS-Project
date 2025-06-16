@@ -15,7 +15,7 @@
 
 	<section>
 
-	<form action='/servicio' method="post">
+	<form action='api/servicepayment' method="post">
 
 		<input type="text" name="nombre-servicio" class="buscador" placeholder="|Buscar servicio">
 
@@ -39,20 +39,26 @@
 			</div>
 		</div>
 
-		<input type="number" name="costo" step="0.01" min="0" placeholder="0.00" required><br>
+		<input type="number" name="amount" step="0.01" min="0" placeholder="0.00" required><br>
     <label>Monto a pagar</label><br>
 
 	 
 		<div class="botones-registro">
-			<button type="button" id="cancela" class="submit">Cancelar</button>
+			<button type="button" href="/main" id="cancela" class="submit">Cancelar</button>
 			<button type="submit" id="confirm" class="submit">Confirmar</button>
 		</div> 
 	</form>
+
+	<% if params[:error] %>
+      <div class="error-msg"><%= params[:error] %></div>
+    <% elsif params[:success] %>
+      <div class="success-msg">Pago realizado exitosamente.</div>
+    <% end %>
 	
 </section>
 
 <footer>
-	ByTheMostCapos
+  © 2025 Wallet
 </footer>
 
 <script src="/js/servicio.js"></script>

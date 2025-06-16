@@ -16,7 +16,6 @@ get '/mainmenu' do
   erb :mainmenu
 end
 
-
 get '/transfer' do
   erb :transfer
 end
@@ -52,4 +51,9 @@ end
 
 get '/' do
   erb :publicview
+end
+
+get '/logout' do
+  session.clear 
+  redirect '/login' 
 end

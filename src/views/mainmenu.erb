@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Sinatra App</title>
+  <link rel="stylesheet" href="/css/theme/dark.css">
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/mainmenu.css">
+
+</head>
+<body>
+
+  <button class="menu_btnn">
+    <ul>
+        <li><a href="/main">Volver a la página principal</a></li>
+        <li><a href="/main">Cuentas Secundarias</a></li>
+        <li><a href="/perfil">Perfil</a></li>
+        <li><a href="/tutorial">Tutorial</a></li>
+        <li><a href="/login">Cerrar Sesión</a></li>
+    </ul>
+  </button>
+ <div class="fondo"></div>
+  <section>
+    <header>
+      <h2>$ <%=@user.account.saldo%> </h2>
+    </header>
+    <div>
+        <button id="transfer_btn"> Transferir </button>
+        <button id="data_btn"> Perfil </button>
+        <button id="movements_btn"> Movimientos </button>
+        <button id="servicio_btn"> Pagar Servicios </button>
+        <button> QR </button>
+        <button> Ahorros </button>
+    </div>
+  </section>
+
+  <footer>
+    © 2025 Wallet
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

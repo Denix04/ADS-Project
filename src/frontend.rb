@@ -11,6 +11,12 @@ get '/main' do
   erb :main
 end
 
+get '/mainmenu' do
+  @user = User.find(session[:id])
+  erb :mainmenu
+end
+
+
 get '/transfer' do
   erb :transfer
 end

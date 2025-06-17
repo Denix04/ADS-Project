@@ -7,7 +7,7 @@ class CreateUsers < ActiveRecord::Migration[6.1]
       t.string :dni # Documento Nacional de Identidad
       t.string :localidad
       t.string :email
-      t.string :password_digest
+      t.string :password
       t.date :fecha_nacimiento
 
       t.index :dni, unique: true

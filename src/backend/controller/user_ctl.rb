@@ -1,3 +1,4 @@
+require 'bcrypt'
 require_relative '../model/user'
 require_relative '../model/account'
 
@@ -10,7 +11,7 @@ module UserCtl
       dni: user_info[:dni],
       localidad: user_info[:locality],
       email: user_info[:email],
-      password_digest: user_info[:password]
+      password: BCrypt::Password.create(user_info[:password])
     )
 
     user_account = Account.create!(
@@ -24,11 +25,12 @@ module UserCtl
   end
 
   def self.login(log_info)
-    user = User.find_by([email: log_info[:email]])
-    if user.nil?
-      nil
-    else
+    user = User.find_by(email: log_info[:email])
+    return nil unless user
+
+    if BCrypt::Password.new(user.password) == log_info[:password]
       user.id
     end
+
   end
 end

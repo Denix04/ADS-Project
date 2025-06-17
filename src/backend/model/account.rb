@@ -1,4 +1,6 @@
 class Account < ActiveRecord::Base
+  before_validation :generar_cbu, on: :create
+
   belongs_to :user
   has_many :sent_movements, class_name: 'Movement', foreign_key: 'origin_id'
   has_many :received_movements, class_name: 'Movement', foreign_key: 'destination_id'
@@ -23,12 +25,21 @@ class Account < ActiveRecord::Base
 
  
    private
- 
-   def principal_account_must_be_nil_if_not_subaccount
-     if !es_subcuenta && principal_account_id.present?
-       errors.add(:principal_account, "debe ser nulo si no es una subcuenta")
-     end
+
+  def generar_cbu
+    return if cbu.present?
+
+    loop do
+      self.cbu = Array.new(22) { rand(10) }.join
+      break unless self.class.exists?(cbu: cbu)
     end
+  end
+
+  def principal_account_must_be_nil_if_not_subaccount
+    if !es_subcuenta && principal_account_id.present?
+      errors.add(:principal_account, "debe ser nulo si no es una subcuenta")
+    end
+  end
 
   def principal_account_cannot_be_self
     if principal_account_id.present? && principal_account.id == id
@@ -41,5 +52,5 @@ class Account < ActiveRecord::Base
       errors.add(:principal_account, "no puede ser una subcuenta")
     end
   end
-   end
+end
 

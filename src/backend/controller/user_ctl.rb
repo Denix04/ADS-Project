@@ -11,15 +11,15 @@ module UserCtl
       dni: user_info[:dni],
       localidad: user_info[:locality],
       email: user_info[:email],
-      password: BCrypt::Password.create(user_info[:password])
+      password_digest: BCrypt::Password.create(user_info[:password_digest])
     )
 
     user_account = Account.create!(
       user: user,
       saldo: 10000,
-      cbu: 323454690,
       alias: "#{user.name.downcase}_principal",
-      es_subcuenta: false)
+      es_subcuenta: false
+    )
 
     user.save!
   end
@@ -28,9 +28,8 @@ module UserCtl
     user = User.find_by(email: log_info[:email])
     return nil unless user
 
-    if BCrypt::Password.new(user.password) == log_info[:password]
+    if BCrypt::Password.new(user.password_digest) == log_info[:password_digest]
       user.id
     end
-
   end
 end

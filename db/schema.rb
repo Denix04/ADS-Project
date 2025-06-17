@@ -10,16 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_27_212535) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_22_224541) do
   create_table "accounts", force: :cascade do |t|
     t.integer "user_id"
     t.decimal "saldo", precision: 10, scale: 2
     t.string "cbu"
     t.string "alias"
     t.boolean "es_subcuenta"
+    t.integer "accounts_id"
+    t.integer "principal_account_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "principal_account_id"
+    t.index ["accounts_id"], name: "index_accounts_on_accounts_id"
     t.index ["principal_account_id"], name: "index_accounts_on_principal_account_id"
     t.index ["user_id"], name: "index_accounts_on_user_id"
   end
@@ -32,9 +34,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_27_212535) do
     t.string "type"
     t.integer "origin_id"
     t.integer "destination_id"
+    t.integer "service_account_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "service_account_id"
     t.index ["destination_id"], name: "index_movements_on_destination_id"
     t.index ["origin_id"], name: "index_movements_on_origin_id"
     t.index ["service_account_id"], name: "index_movements_on_service_account_id"
@@ -65,17 +67,19 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_27_212535) do
 
   create_table "users", force: :cascade do |t|
     t.string "name"
-    t.string "email"
-    t.string "password_digest"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.string "last_name"
     t.string "dni"
     t.string "localidad"
+    t.string "email"
+    t.string "password_digest"
     t.date "fecha_nacimiento"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["dni"], name: "index_users_on_dni", unique: true
+    t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "accounts", "accounts", column: "accounts_id"
   add_foreign_key "accounts", "accounts", column: "principal_account_id"
   add_foreign_key "accounts", "users"
   add_foreign_key "movements", "accounts", column: "destination_id"

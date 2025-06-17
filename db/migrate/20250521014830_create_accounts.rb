@@ -6,7 +6,7 @@ class CreateAccounts < ActiveRecord::Migration[8.0]
       t.string :cbu
       t.string :alias
       t.boolean :es_subcuenta
-      t.reference :accounts, :principal_account, foreign_key: { to_table: :accounts }, null: true
+      t.references :accounts, :principal_account, foreign_key: { to_table: :accounts }, null: true
 
       t.timestamps 
     end

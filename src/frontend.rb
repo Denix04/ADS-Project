@@ -28,6 +28,10 @@ get '/register' do
   erb :register
 end
 
+get '/registerSecAccount' do
+  erb :registerSecAccount
+end
+
 get '/servicio' do
   erb :servicio
 end
@@ -59,7 +63,7 @@ get '/servicepayment' do
 end
 
 get '/logout' do
-  session.clear 
-  redirect '/login' 
+  session.clear
+  redirect '/login'
 end
 

@@ -73,6 +73,15 @@ hr {
   gap: 10px;
 }
 
+.back {
+  font-weight: bold;
+  cursor: pointer;
+}
+.back a {
+  text-decoration: none;
+  color: #f9ddc6;
+}
+
 .initials {
 
   color: #000;

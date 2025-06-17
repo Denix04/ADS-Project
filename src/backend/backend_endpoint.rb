@@ -20,9 +20,15 @@ post '/api/login' do
     'invalid email or password'
   end
 end
-    
+
 post '/api/register' do
   if UserCtl.register params
+    redirect '/'
+  end
+end
+
+post '/api/registerSecAccount' do
+  if UserCtl.register_Sec_Account(params, session)
     redirect '/'
   end
 end

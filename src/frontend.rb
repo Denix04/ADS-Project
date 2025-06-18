@@ -2,6 +2,22 @@ require 'sinatra'
 
 require_relative './backend/controller/user_ctl'
 
+# Rutas que no requieren iniciar sesión
+PUBLIC_ROUTES = ['/', '/login', '/register', '/registerSecAccount']
+
+before do
+  # Si ya hay sesión, no dejar entrar a publicview, login ni register
+  if session[:id] && ['/', '/login', '/register'].include?(request.path_info)
+    redirect '/main'
+  end
+
+  if request.request_method == "GET"
+    unless PUBLIC_ROUTES.include?(request.path_info) || session[:id]
+      redirect '/login'
+    end
+  end
+end
+
 get '/login' do
   erb :login
 end
@@ -50,6 +66,10 @@ get '/perfil' do
 end
 
 get '/movimientos' do
+  @user = User.find(session[:id])
+  @account = @user.account
+  # Movimientos donde la cuenta es origen (egreso) o destino (ingreso)
+  @movements = Movement.where("origin_id = ? OR destination_id = ?", @account.id, @account.id).order(date: :desc)
   erb :movements
 end
 
@@ -64,6 +84,13 @@ end
 
 get '/logout' do
   session.clear
-  redirect '/login'
+  redirect '/'
+end
+
+get '/subaccount/:id' do
+  @subaccount = Account.find(params[:id])
+  @user = @subaccount.user
+  @movements = Movement.where("origin_id = ? OR destination_id = ?", @subaccount.id, @subaccount.id).order(date: :desc)
+  erb :perfilsecundario
 end
 

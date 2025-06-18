@@ -5,12 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Perfil</title>
   <link rel="stylesheet" href="/css/perfil.css">
+  <script src="/js/perfil.js"></script>
 
 </head>
 <body>
   <div class="container">
     <div class="top-bar">
-      <span class="back"><a href="/main">Back</a></span>
+      <span class="back"><a href="/perfil">Back</a></span>
     </div>
 
     <h1 class="title">Mi Perfil <span class="info-icon">?</span></h1>
@@ -31,18 +32,20 @@
     <h2 class="subtitle">Cuentas Asociadas</h2>
     <span class="back"><a href="/registerSecAccount">Nueva</a></span>
 
-    <div class="accounts">
-      <% @subaccounts.each do |sub| %>
-        <% initials = "#{sub.user.name[0]}#{sub.user.last_name[0]}".downcase %>
-        <div class="account">
-          <div class="initials <%= initials %>"><%= initials.upcase %></div>
-          <div class="details">
-            <span><%= sub.user.name %> <%= sub.user.last_name %></span>
-            <span class="amount">$ <%= '%.2f' % sub.saldo %></span>
-          </div>
-        </div>
-      <% end %>
+   <div class="accounts">
+    <% @subaccounts.each do |sub| %>
+    <% initials = "#{sub.user.name[0]}#{sub.user.last_name[0]}".downcase %>
+   <div class="account clickable" data-url="/subaccount/<%= sub.id %>">
+
+      <div class="initials <%= initials %>"><%= initials.upcase %> </div>
+      <div class="details">
+        <span><%= sub.user.name %> <%= sub.user.last_name %></span>
+        <span class="amount">$ <%= '%.2f' % sub.saldo %></span>
+      </div>
     </div>
+  <% end %>
+ </div>
+   
 
     <footer>
     </footer>

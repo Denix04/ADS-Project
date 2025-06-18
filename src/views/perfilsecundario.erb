@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Cuenta secundaria</title>
+  <link rel="stylesheet" href="/css/perfilsecundario.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <a href="#" class="back">Back</a>
+       <h2 class="title"> <strong> <%=@user.name%> <%=@user.last_name%> </strong> </h2>
+       <hr>
+    </div>
+
+    <div class="balance-card">
+      <span class="amount">$ 1.000</span>
+      <span class="icon">🛈</span>
+    </div>
+    
+<div class="movements">
+ <% if @movements.empty? %>
+  <div class="no-movements">
+    <p>No hay movimientos registrados.</p>
+  
+  <% else %>
+  <% @subaccount.movements.each do |mov| %>
+    <% if mov.origin_id == @account.id %>
+      <% signo = "-" %>
+      <% clase = "egreso" %>
+      <% persona = mov.destination&.user&.name || mov.service || "Sin descripción" %>
+    <% else %>
+      <% signo = "+" %>
+      <% clase = "ingreso" %>
+      <% persona = mov.origin&.user&.name || "Desconocido" %>
+    <% end %>
+
+    <div class="movement <%= clase %>">
+      <span class="left"><%= persona %></span>
+      <span class="center"><%= signo %> $<%= '%.2f' % mov.amount %></span>
+      <span class="right"><%= mov.reason || mov.service || mov.type %></span>
+    </div>
+  <% end %>
+  <% end %>
+</div>
+
+    <div class="restricciones">
+      <h3 class="restricciones-title">Restricciones Activas <span class="icon">🛈</span></h3>
+      <hr>
+      <div class="restriccion-row">
+        <span>Restricción de Monto</span>
+        <span>15/04 - 14/06</span>
+        <span>Monto: $1000</span>
+      </div>
+      <div class="restriccion-row">
+        <span>Restricción de Monto</span>
+        <span>15/04 - 14/06</span>
+        <span>Monto: $1000</span>
+      </div>
+      <div class="restriccion-row">
+        <span>Restricción por Horario</span>
+        <span>15/04 - 14/06</span>
+        <span>Monto: $500</span>
+      </div>
+      <div class="buttons">
+        <button class="btn">Desactivar Cuenta Secundaria</button>
+        <button class="btn">Añadir Restricción</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -10,33 +10,29 @@
 <body>
   <div class="container">
     <div class="top-bar">
-      <span class="back">Back</span>
+      <span class="back"><a href="/main">Back</a></span>
     </div>
 
     <h1 class="title">Movements</h1>
     <hr>
 
     <div class="movements">
-      <div class="movement">
-        <span class="left">Alicia Sanches</span>
-        <span class="center">$ 4832,23</span>
-        <span class="right">Banco Cordoba</span>
-      </div>
-      <div class="movement">
-        <span class="left">Prov. Nambo</span>
-        <span class="center">$ 130.000,00</span>
-        <span class="right">Banco Intercontinental</span>
-      </div>
-      <div class="movement">
-        <span class="left">Mama</span>
-        <span class="center">$15.500,00</span>
-        <span class="right">Deuda</span>
-      </div>
-      <div class="movement">
-        <span class="left">Pros.</span>
-        <span class="center">$5.550,69</span>
-        <span class="right">No Comments</span>
-      </div>
+      <% @movements.each do |mov| %>
+        <% if mov.origin_id == @account.id %>
+          <% signo = "-" %>
+          <% clase = "egreso" %>
+          <% persona = mov.destination&.user&.name || mov.service || "Sin descripción" %>
+        <% else %>
+          <% signo = "+" %>
+          <% clase = "ingreso" %>
+          <% persona = mov.origin&.user&.name || "Desconocido" %>
+        <% end %>
+        <div class="movement <%= clase %>">
+          <span class="left"><%= persona %></span>
+          <span class="center"><%= signo %> $<%= '%.2f' % mov.amount %></span>
+          <span class="right"><%= mov.reason || mov.service || mov.type %></span>
+        </div>
+      <% end %>
     </div>
 
     <footer>

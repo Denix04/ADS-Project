@@ -6,12 +6,15 @@
   <title>Bienvenido</title>
    <link rel="stylesheet" href="/css/theme/dark.css">
   <link rel="stylesheet" href="/css/publicview.css"></head>
-<body>
+  
+  <body>
   <header class="top-bar">
     <div class="logo">Wallet</div>
     <nav class="nav-links">
-      <a href="/register"> Registrarse</a>
-      <a href="/login">Iniciar sesión</a>
+     <% if !session[:id] %>
+      <a href="/register" class="btn-efecto">Registrarse</a>
+      <a href="/login" class="btn-efecto">Iniciar sesión</a>
+  <% end %>
     </nav>
   </header>
 

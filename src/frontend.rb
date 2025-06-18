@@ -87,3 +87,10 @@ get '/logout' do
   redirect '/'
 end
 
+get '/subaccount/:id' do
+  @subaccount = Account.find(params[:id])
+  @user = @subaccount.user
+  @movements = Movement.where("origin_id = ? OR destination_id = ?", @subaccount.id, @subaccount.id).order(date: :desc)
+  erb :perfilsecundario
+end
+

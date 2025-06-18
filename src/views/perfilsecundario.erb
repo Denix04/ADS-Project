@@ -9,37 +9,40 @@
   <div class="container">
     <div class="header">
       <a href="#" class="back">Back</a>
-      <h2 class="title">Abril Debernardi <span class="icon">🛈</span></h2>
-      <hr>
+       <h2 class="title"> <strong> <%=@user.name%> <%=@user.last_name%> </strong> </h2>
+       <hr>
     </div>
 
     <div class="balance-card">
       <span class="amount">$ 1.000</span>
       <span class="icon">🛈</span>
     </div>
+    
+<div class="movements">
+ <% if @movements.empty? %>
+  <div class="no-movements">
+    <p>No hay movimientos registrados.</p>
+  
+  <% else %>
+  <% @subaccount.movements.each do |mov| %>
+    <% if mov.origin_id == @account.id %>
+      <% signo = "-" %>
+      <% clase = "egreso" %>
+      <% persona = mov.destination&.user&.name || mov.service || "Sin descripción" %>
+    <% else %>
+      <% signo = "+" %>
+      <% clase = "ingreso" %>
+      <% persona = mov.origin&.user&.name || "Desconocido" %>
+    <% end %>
 
-    <div class="table">
-      <div class="row">
-        <div class="cell">Aldito Sanchez</div>
-        <div class="cell">$ 4.653,28</div>
-        <div class="cell">Buena Conducción</div>
-      </div>
-      <div class="row">
-        <div class="cell">Prox. Monto</div>
-        <div class="cell">$ 130.000,00</div>
-        <div class="cell">Banco Internacional</div>
-      </div>
-      <div class="row">
-        <div class="cell">Mama</div>
-        <div class="cell">$13.000,00</div>
-        <div class="cell">Deuda</div>
-      </div>
-      <div class="row">
-        <div class="cell">Prox.</div>
-        <div class="cell">$6.559,06</div>
-        <div class="cell">No Comentarios</div>
-      </div>
+    <div class="movement <%= clase %>">
+      <span class="left"><%= persona %></span>
+      <span class="center"><%= signo %> $<%= '%.2f' % mov.amount %></span>
+      <span class="right"><%= mov.reason || mov.service || mov.type %></span>
     </div>
+  <% end %>
+  <% end %>
+</div>
 
     <div class="restricciones">
       <h3 class="restricciones-title">Restricciones Activas <span class="icon">🛈</span></h3>

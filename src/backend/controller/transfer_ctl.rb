@@ -6,10 +6,10 @@ require_relative '../model/transfer'
 module TransferCtl
   def self.do_transfer(params, session)
     user = User.find_by(id: session[:id])
-    return { success: false, error: "Usuario no autenticado" } if user.nil?
+    return { success: false, error: 'Usuario no autenticado' } if user.nil?
 
     origin_account = user.account
-    return { success: false, error: "Cuenta de origen no encontrada" } if origin_account.nil?
+    return { success: false, error: 'Cuenta de origen no encontrada' } if origin_account.nil?
 
     # Buscar cuenta destino por alias o CBU
     destination_account = Account.find_by(alias: params[:cbu]) || Account.find_by(cbu: params[:cbu])

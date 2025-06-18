@@ -12,6 +12,12 @@
   </header>
 
   <section>
+    <% if params[:error] %>
+      <div class="error-msg"><%= params[:error] %></div>
+    <% end %>
+    <% if params[:success] %>
+      <div class="success-msg"><%= params[:success] %></div>
+    <% end %>
 
     <form action='/api/login' method="post">
 

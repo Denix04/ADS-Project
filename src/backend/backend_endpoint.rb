@@ -25,13 +25,15 @@ end
 
 post '/api/register' do
   if UserCtl.register params
-    redirect '/'
+    result = { success: true, msj: 'Usuario registrado con exito' }
+    redirect "/login?success=#{Rack::Utils.escape(result[:msj])}"
   end
 end
 
 post '/api/registerSecAccount' do
   if UserCtl.register_Sec_Account(params, session)
-    redirect '/'
+    result = { success: true, msj: 'Usuario secundario registrado con exito' }
+    redirect "/login?success=#{Rack::Utils.escape(result[:msj])}"
   end
 end
 

@@ -2,6 +2,7 @@ require 'sinatra'
 require_relative 'controller/user_ctl'
 require_relative 'controller/transfer_ctl'
 require_relative 'controller/servicepayment_ctl'
+require_relative 'controller/deposit_ctl'
 
 get '/api' do
   'hello to de api'
@@ -52,3 +53,14 @@ post '/api/servicepayment' do
   end
 end
 
+post '/api/deposit' do
+  result = DepositCtl.create_deposit(
+    { amount: params[:amount] }, session
+  )
+
+  if result[:success]
+    redirect "/deposit?success=ok"
+  else
+    redirect "/deposit?error=#{Rack::Utils.escape(result[:error])}"
+  end
+end

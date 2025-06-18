@@ -4,11 +4,16 @@
   <meta charset="UTF-8">
   <title>Cuenta secundaria</title>
   <link rel="stylesheet" href="/css/perfilsecundario.css">
+  <link rel="stylesheet" href="/css/movements.css">
+  <link rel="stylesheet" href="/css/perfil.css">
 </head>
 <body>
   <div class="container">
-    <div class="header">
-      <a href="/perfil" class="back">Back</a>
+    
+      <div class="top-bar">
+      <span class="back"><a href="/main">Back</a></span>
+    
+
        <h2 class="title"> <strong> <%=@user.name%> <%=@user.last_name%> </strong> </h2>
        <hr>
     </div>
@@ -20,12 +25,12 @@
     
 <div class="movements">
  <% if @movements.empty? %>
-  <div class="no-movements">
-    <p>No hay movimientos registrados.</p>
-  
-  <% else %>
-  <% @subaccount.movements.each do |mov| %>
-    <% if mov.origin_id == @account.id %>
+        <div class="movement ">
+          <p>No se registraron movimientos aún.</p>
+        </div>
+      <% else %>
+  <% @movements.each do |mov| %>
+    <% if mov.origin == @subaccount.id %>
       <% signo = "-" %>
       <% clase = "egreso" %>
       <% persona = mov.destination&.user&.name || mov.service || "Sin descripción" %>

@@ -5,7 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Movements</title>
   <link rel="stylesheet" href="/css/movements.css">
-  <link rel="stylesheet" href="/css/theme/dark.css">
+  <link rel="stylesheet" href="/css/perfil.css">
+  
 </head>
 <body>
   <div class="container">
@@ -17,21 +18,27 @@
     <hr>
 
     <div class="movements">
-      <% @movements.each do |mov| %>
-        <% if mov.origin_id == @account.id %>
-          <% signo = "-" %>
-          <% clase = "egreso" %>
-          <% persona = mov.destination&.user&.name || mov.service || "Sin descripción" %>
-        <% else %>
-          <% signo = "+" %>
-          <% clase = "ingreso" %>
-          <% persona = mov.origin&.user&.name || "Desconocido" %>
-        <% end %>
-        <div class="movement <%= clase %>">
-          <span class="left"><%= persona %></span>
-          <span class="center"><%= signo %> $<%= '%.2f' % mov.amount %></span>
-          <span class="right"><%= mov.reason || mov.service || mov.type %></span>
+      <% if @movements.empty? %>
+        <div class="movement ">
+          <p>No se registraron movimientos aún.</p>
         </div>
+      <% else %>
+        <% @movements.each do |mov| %>
+          <% if mov.origin_id == @account.id %>
+            <% signo = "-" %>
+            <% clase = "egreso" %>
+            <% persona = mov.destination&.user&.name || mov.service || "Sin descripción" %>
+          <% else %>
+            <% signo = "+" %>
+            <% clase = "ingreso" %>
+            <% persona = mov.origin&.user&.name || "Desconocido" %>
+          <% end %>
+          <div class="movement <%= clase %>">
+            <span class="left"><%= persona %></span>
+            <span class="center"><%= signo %> $<%= '%.2f' % mov.amount %></span>
+            <span class="right"><%= mov.reason || mov.service || mov.type %></span>
+          </div>
+        <% end %>
       <% end %>
     </div>
 

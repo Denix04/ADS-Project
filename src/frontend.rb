@@ -3,11 +3,11 @@ require 'sinatra'
 require_relative './backend/controller/user_ctl'
 
 # Rutas que no requieren iniciar sesión
-PUBLIC_ROUTES = ['/', '/login', '/register', '/registerSecAccount']
+PUBLIC_ROUTES = ['/', '/login', '/register', 'publicview', 'unauthorized'] 
 
 before do
   # Si ya hay sesión, no dejar entrar a publicview, login ni register
-  if session[:id] && ['/', '/login', '/register'].include?(request.path_info)
+  if session[:id] && ['/', '/login', '/register', 'publicview'].include?(request.path_info)
     redirect '/main'
   end
 
@@ -51,8 +51,19 @@ get '/register' do
   erb :register
 end
 
+get '/unauthorized' do
+  erb :unauthorized
+end
+
 get '/registerSecAccount' do
-  erb :registerSecAccount
+  @user = User.find(session[:id])
+  @account = @user.account
+
+  if @account.es_subcuenta
+    redirect '/unauthorized'
+  else
+    erb :registerSecAccount
+  end
 end
 
 get '/servicio' do

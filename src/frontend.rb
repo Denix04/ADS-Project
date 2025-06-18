@@ -32,6 +32,13 @@ get '/mainmenu' do
   erb :mainmenu
 end
 
+get '/deposit' do
+  @user = User.find(session[:id])
+  @account = @user.account
+  erb :deposit
+end
+
+
 get '/transfer' do
   erb :transfer
 end

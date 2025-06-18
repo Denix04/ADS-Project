@@ -82,3 +82,19 @@ footer {
     margin-top: 5%;
     margin-bottom: auto;
 }
+
+.error-msg {
+  background-color: #ffcccc;
+  color: #990000;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+}
+
+.success-msg {
+  background-color: #ccffcc;
+  color: #006600;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+}

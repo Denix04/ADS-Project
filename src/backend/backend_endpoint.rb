@@ -18,7 +18,8 @@ post '/api/login' do
     session[:id] = user_id
     redirect '/main'
   else
-    'invalid email or password'
+    result = { success: false, error: 'Contrazeña o Email invalido' }
+    redirect "/login?error=#{Rack::Utils.escape(result[:error])}"
   end
 end
 

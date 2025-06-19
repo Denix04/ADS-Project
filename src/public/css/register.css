@@ -6,6 +6,12 @@ label {
     margin-top: -15px; 
 }
 
+input{
+    color: #f7e7cf;
+    text-align: left;
+    font-size: large;
+}
+
 .campos {
     display: flex;
     flex-wrap: wrap;

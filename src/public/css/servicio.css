@@ -13,6 +13,11 @@ label {
     border-color: #CFF7D3;
 }
 
+input{
+    color: #f7e7cf;
+    text-align: left;
+    font-size: large;
+}
 input::placeholder {
     color:#8E9990;
     text-align: left;

@@ -39,6 +39,13 @@ input {
     display: block;
     margin: 5px auto;
 }
+
+input{
+    color: #f7e7cf;
+    text-align: left;
+    font-size: large;
+}
+
 input::placeholder {
     color:#F7E7CF;
     text-align: center;

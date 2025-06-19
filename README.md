@@ -16,6 +16,17 @@ Este proyecto se trata de una billetera vitual con funciones simples y fácil de
 - Diagrama UML: se puede ver en el archivo DiagramaClases.jpg
 También se encuentra el archivo ADS_UML.drawio (desarrollado con https://app.diagrams.net)
 
+## 💸 Funcionalidad de Depósito (Simulación)
+
+La funcionalidad de **depósito** está implementada como una **simulación** de ingreso de dinero desde una fuente externa a la billetera virtual.
+
+- No hay integración real con entidades bancarias.
+- Se asume que el usuario deposita dinero a través de un canal externo (por ejemplo, un cajero automático o transferencia bancaria).
+- El sistema **incrementa el saldo de la cuenta destino** directamente como si el depósito hubiera sido exitoso.
+
+Esto permite probar y visualizar el comportamiento del sistema sin necesidad de realizar operaciones reales.
+
+
 ## :busts_in_silhouette: Integrantes
 
 - Aguirre Trinidad

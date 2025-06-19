@@ -3,7 +3,7 @@ require 'sinatra'
 require_relative './backend/controller/user_ctl'
 
 # Rutas que no requieren iniciar sesión
-PUBLIC_ROUTES = ['/', '/login', '/register', 'publicview', 'unauthorized'] 
+PUBLIC_ROUTES = ['/', '/login', '/register', 'publicview','/about', 'unauthorized'] 
 
 before do
   # Si ya hay sesión, no dejar entrar a publicview, login ni register
@@ -112,3 +112,6 @@ get '/subaccount/:id' do
   erb :perfilsecundario
 end
 
+get '/about' do
+  erb :about
+end

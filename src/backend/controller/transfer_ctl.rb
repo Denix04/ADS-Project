@@ -14,7 +14,8 @@ module TransferCtl
     # Buscar cuenta destino por alias o CBU
     destination_account = Account.find_by(alias: params[:cbu]) || Account.find_by(cbu: params[:cbu])
     return { success: false, error: 'Cuenta destino no encontrada' } if destination_account.nil?
-
+    return { success: false, error: "No puedes transferir a tu propia cuenta" } if origin_account.id == destination_account.id
+    
     begin
       Transfer.create!(
         origin: origin_account,

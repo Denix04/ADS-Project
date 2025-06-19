@@ -16,7 +16,7 @@ module TransferCtl
     return { success: false, error: 'Cuenta destino no encontrada' } if destination_account.nil?
     return { success: false, error: "No puedes transferir a tu propia cuenta" } if origin_account.id == destination_account.id
     return { success: false, error: 'Cantidad a transferir debe ser positiva' } if params[:amount].to_f <= 0
-    return { success: false, error: 'Saldo insuficiente' } if origin_account.balance < params[:amount].to_f
+    return { success: false, error: 'Saldo insuficiente' } if origin_account.saldo < params[:amount].to_f
    
     begin
       Transfer.create!(

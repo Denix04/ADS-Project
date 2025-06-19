@@ -36,18 +36,16 @@
           <div class="movement <%= clase %>">
             <span class="left"><%= persona %></span>
             <span class="center"><%= signo %> $<%= '%.2f' % mov.amount %></span>
-            <span class="right"><%= mov.reason || mov.service || mov.type %></span>
+            <span class="right"><%= mov.reason || mov.type || mov.service %></span>
           </div>
         <% end %>
       <% end %>
     </div>
 
     <footer>
-      <div class="footer-content">
-        <span> </span>
+     
         <span> © 2025 Wallet </span>
-        <span> </span>
-      </div>
+      
     </footer>
   </div>
 </body>

@@ -16,7 +16,8 @@ module ServicePaymentCtl
       ServicePayment.create!(
         origin: origin_account,
         amount: params[:amount].to_f,
-        date: DateTime.now
+        date: DateTime.now,
+        service: params[:'nombre-servicio']
       )
       { success: true }
     rescue ActiveRecord::RecordInvalid => e

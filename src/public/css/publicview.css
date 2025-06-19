@@ -1,13 +1,21 @@
-body {
+html, body {
+  height: 100%;
+  min-height: 100vh;
   margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+body {
+  flex: 1 0 auto;
   font-family: 'Segoe UI', sans-serif;
   background-color: #1e1e1e;
   color: #e0f8e3;
-    
 }
 
 .main-content {
-  flex: 1; /* Este contenedor crece para ocupar espacio y empuja el footer abajo */
+  flex: 1; 
 }
 
 .top-bar {
@@ -36,7 +44,8 @@ body {
   text-decoration: underline;
 }
 
-.hero {
+main.hero {
+  flex: 1 0 auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -46,6 +55,7 @@ body {
 
 .text-content {
   max-width: 500px;
+  margin-left: 90px;
 }
 
 .text-content h1 {
@@ -79,6 +89,7 @@ body {
 .image-content img {
   max-width: 400px;
   width: 100%;
+  margin-right: 90px;
 }
 
 .footer {
@@ -87,6 +98,7 @@ body {
   background-color: #2a2a2a;
   border-top: 1px solid #aaffc3;
   font-size: 0.9rem;
+  margin-top: auto;
 }
 
 .btn-efecto {
@@ -103,4 +115,24 @@ body {
   background: #00bcd4;
   color: #222;
   box-shadow: 0 2px 8px #00bcd488;
+}
+
+.btn-conocenos {
+  background: #aaffc3;
+  color: #1e1e1e;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  text-decoration: none;
+  box-shadow: 0 2px 8px #aaffc388;
+  transition: background 0.2s, color 0.2s;
+  margin-top: 10px;
+  display: inline-block;
+}
+
+.btn-conocenos:hover {
+  background: #86d9a7;
+  color: #222;
 }
